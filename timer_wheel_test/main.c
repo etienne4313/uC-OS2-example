@@ -1,6 +1,6 @@
 #include <ucos_ii.h>
 
-#define FUNC(a,b) static void a ## b(int arg) { \
+#define FUNC(a,b) static void a ## b(int arg, unsigned long t) { \
 	timing[arg] = get_monotonic_time(); \
 }
 
@@ -29,7 +29,7 @@ FUNC(w, 9);
 FUNC(w, 10);
 FUNC(w, 11);
 
-void (*f[12])(int) = {w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11};
+void (*f[12])(int, unsigned long) = {w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11};
 
 static unsigned char stack1[STACK_SIZE];
 static void t1(void *p)
