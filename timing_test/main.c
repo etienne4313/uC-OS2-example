@@ -72,7 +72,7 @@ static void t1(void *p)
 			OS_EXIT_CRITICAL();
 			PRINT("%ld ", t2-t1);
 		}
-		
+
 		/*
 		 * Measure semaphore wakeup time
 		 * => 524 ( 32.75 usec )
@@ -107,7 +107,7 @@ static void t1(void *p)
 			OS_EXIT_CRITICAL();
 			PRINT("%ld ", t2-t1);
 		}
-		
+
 		/*
 		 * Measure semaphore pend time
 		 * => 117
@@ -139,7 +139,7 @@ int main(void)
 	OS_CPU_SR cpu_sr = 0;
 
 	/* Don't let any IRQ come */
-    OS_ENTER_CRITICAL();
+	OS_ENTER_CRITICAL();
 
 	lib_init();
 	PRINT("Entering main loop\n");

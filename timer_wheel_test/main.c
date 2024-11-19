@@ -72,7 +72,7 @@ static void t2(void *p)
 	OS_CPU_SR cpu_sr = 0;
 	while (1) {
 		/* This thread is faking some IRQ noise */
-    	OS_ENTER_CRITICAL();
+		OS_ENTER_CRITICAL();
 		_delay_us(50);
 		OS_EXIT_CRITICAL();
 	}
@@ -83,7 +83,7 @@ int main(void)
 	OS_CPU_SR cpu_sr = 0;
 
 	/* Don't let any IRQ come */
-    OS_ENTER_CRITICAL();
+	OS_ENTER_CRITICAL();
 
 	lib_init();
 	PRINT("Entering main control loop\n");
