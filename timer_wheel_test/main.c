@@ -45,7 +45,7 @@ FUNC(w, 11);
 
 void (*f[12])(int, unsigned long) = {w0, w1, w2, w3, w4, w5, w6, w7, w8, w9, w10, w11};
 
-static unsigned char stack1[STACK_SIZE];
+static OS_STK stack1[STACK_SIZE];
 static void t1(void *p)
 {
 	int x;
@@ -80,7 +80,7 @@ static void t1(void *p)
 	}
 }
 
-static unsigned char stack2[STACK_SIZE];
+static OS_STK stack2[STACK_SIZE];
 static void t2(void *p)
 {
 	OS_CPU_SR cpu_sr = 0;
@@ -104,8 +104,8 @@ int main(void)
 
 	OSInit();
 
-	OSTaskCreate(t1, "t1", (void *)&stack1[STACK_SIZE - 1], 1);
-	OSTaskCreate(t2, "t2", (void *)&stack2[STACK_SIZE - 1], 2);
+	OSTaskCreate(t1, "t1", &stack1[STK_HEAD(STACK_SIZE)], 1);
+	OSTaskCreate(t2, "t2", &stack2[STK_HEAD(STACK_SIZE)], 2);
 
 	/* IRQ are enabled when the first thread is started */
 	OSStart();

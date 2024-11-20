@@ -27,7 +27,7 @@ void die(int err, int line)
 	while(1){};
 }
 
-static unsigned char stack1[STACK_SIZE];
+static OS_STK stack1[STACK_SIZE];
 
 /*
  * Results from mega328@16Mhz / 62.5nsec per cycle
@@ -139,7 +139,7 @@ static void t1(void *p)
 	}
 }
 
-static unsigned char stack2[STACK_SIZE];
+static OS_STK stack2[STACK_SIZE];
 static void t2(void *p)
 {
 	while (1) {
@@ -162,8 +162,8 @@ int main(void)
 
 	a = OSSemCreate(0);
 	b = OSSemCreate(0);
-	OSTaskCreate(t1, "t1", (void *)&stack1[STACK_SIZE - 1], 1);
-	OSTaskCreate(t2, "t2", (void *)&stack2[STACK_SIZE - 1], 2);
+	OSTaskCreate(t1, "t1", &stack1[STK_HEAD(STACK_SIZE)], 1);
+	OSTaskCreate(t2, "t2", &stack2[STK_HEAD(STACK_SIZE)], 2);
 
 	/* IRQ are enabled when the first thread is started */
 	OSStart();
