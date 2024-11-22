@@ -61,7 +61,7 @@ static void t1(void *p)
 		memset(timing, 0, sizeof(timing));
 		t = get_monotonic_time();
 		for(x=0; x<12; x++){
-			schedule_work(f[x], x, t + offset + table[x]);
+			schedule_work_absolute(f[x], x, t + offset + table[x]);
 			DELAY_USEC(100);
 		}
 
