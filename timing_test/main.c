@@ -23,7 +23,7 @@ static unsigned long T1;
 
 void die(int err, int line)
 {
-	fprintf(stderr, "DIE %d : %d\n", err, line);
+	PRINT("DIE %d : %d\n", err, line);
 	while(1){};
 }
 
@@ -51,7 +51,7 @@ static void t1(void *p)
 		for(x=0; x<REPEAT; x++){
 			OS_ENTER_CRITICAL();
 			t1 = get_monotonic_cycle();
-			_delay_us(500);
+			DELAY_USEC(500);
 			t2 = get_monotonic_cycle();
 			OS_EXIT_CRITICAL();
 			PRINT("%ld ", t2-t1);
@@ -65,7 +65,7 @@ static void t1(void *p)
 		PRINT("\nT2\n");
 		for(x=0; x<REPEAT; x++){
 			t1 = get_monotonic_cycle();
-			_delay_us(500);
+			DELAY_USEC(500);
 			t2 = get_monotonic_cycle();
 			PRINT("%ld ", t2-t1);
 		}

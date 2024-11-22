@@ -21,7 +21,7 @@ static unsigned long ctr = 0;
 
 void die(int err, int line)
 {
-	fprintf(stderr, "DIE %d : %d\n", err, line);
+	PRINT("DIE %d : %d\n", err, line);
 	while(1){};
 }
 

@@ -26,7 +26,7 @@ static unsigned long timing[12];
 
 void die(int err, int line)
 {
-	fprintf(stderr, "DIE %d : %d\n", err, line);
+	PRINT("DIE %d : %d\n", err, line);
 	while(1){};
 }
 
@@ -62,7 +62,7 @@ static void t1(void *p)
 		t = get_monotonic_time();
 		for(x=0; x<12; x++){
 			schedule_work(f[x], x, t + offset + table[x]);
-			_delay_us(100);
+			DELAY_USEC(100);
 		}
 
 		/* Let all the event complete */
@@ -87,7 +87,7 @@ static void t2(void *p)
 	while (1) {
 		/* This thread is faking some IRQ noise */
 		OS_ENTER_CRITICAL();
-		_delay_us(50);
+		DELAY_USEC(50);
 		OS_EXIT_CRITICAL();
 	}
 }
