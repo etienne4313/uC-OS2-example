@@ -1,6 +1,11 @@
 #
 # Build all the subdir
-# Flash: make -C timer_wheel_test/ flash
+# 
+#  ARCH avr:
+#  Flash: make -C timer_wheel_test/ flash
+#
+#  KLM:
+#  Load/unload: make -C timer_wheel_test/ load ; make -C timer_wheel_test/ unload
 #
 PROGRAM := ping_pong_sem simple_sem timer_wheel_test timing_test
 
