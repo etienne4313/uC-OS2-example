@@ -24,7 +24,7 @@ static unsigned long offset = 0UL;
 static unsigned long table[] = {4000, 600, 1400, 13000, 50000, 2000, 1900, 7400, 6400, 8800, 8000, 3300};
 static unsigned long timing[12];
 
-void die(int err, int line)
+void osdie(int err, int line)
 {
 	PRINT("DIE %d : %d\n", err, line);
 	while(1){};

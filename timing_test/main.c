@@ -19,9 +19,9 @@
 int debug = 1;
 
 static OS_EVENT *a, *b;
-static unsigned long T1;
+static cpu_cycle_t T1;
 
-void die(int err, int line)
+void osdie(int err, int line)
 {
 	PRINT("DIE %d : %d\n", err, line);
 	while(1){};
@@ -37,7 +37,7 @@ static void t1(void *p)
 {
 	int x;
 	INT8U err;
-	unsigned long t1, t2;
+	cpu_cycle_t t1, t2;
 	OS_CPU_SR cpu_sr = 0;
 
 	while(1){
@@ -54,7 +54,7 @@ static void t1(void *p)
 			DELAY_USEC(500);
 			t2 = get_monotonic_cycle();
 			OS_EXIT_CRITICAL();
-			PRINT("%ld ", t2-t1);
+			PRINT("%ld ", (unsigned long)(t2-t1));
 		}
 
 		/*
@@ -67,7 +67,7 @@ static void t1(void *p)
 			t1 = get_monotonic_cycle();
 			DELAY_USEC(500);
 			t2 = get_monotonic_cycle();
-			PRINT("%ld ", t2-t1);
+			PRINT("%ld ", (unsigned long)(t2-t1));
 		}
 
 		/*
@@ -84,7 +84,7 @@ static void t1(void *p)
 			portRESTORE_CONTEXT();
 			t2 = get_monotonic_cycle();
 			OS_EXIT_CRITICAL();
-			PRINT("%ld ", t2-t1);
+			PRINT("%ld ", (unsigned long)(t2-t1));
 		}
 
 		/*
@@ -105,7 +105,7 @@ static void t1(void *p)
 		for(x=0; x<REPEAT; x++){
 			OSSemPend(a, 0, &err);
 			t2 = get_monotonic_cycle();
-			PRINT("%ld ", t2-T1);
+			PRINT("%ld ", (unsigned long)(t2-T1));
 		}
 
 		/*
@@ -119,7 +119,7 @@ static void t1(void *p)
 			OSSemPost(b);
 			t2 = get_monotonic_cycle();
 			OS_EXIT_CRITICAL();
-			PRINT("%ld ", t2-t1);
+			PRINT("%ld ", (unsigned long)(t2-t1));
 		}
 
 		/*
@@ -134,7 +134,7 @@ static void t1(void *p)
 			OSSemPend(b, 0, &err);
 			t2 = get_monotonic_cycle();
 			OS_EXIT_CRITICAL();
-			PRINT("%ld ", t2-t1);
+			PRINT("%ld ", (unsigned long)(t2-t1));
 		}
 	}
 }

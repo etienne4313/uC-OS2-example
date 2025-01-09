@@ -18,7 +18,7 @@ int debug = 1;
 
 static OS_EVENT *e;
 
-void die(int err, int line)
+void osdie(int err, int line)
 {
 	PRINT("DIE %d : %d\n", err, line);
 	while(1){};
