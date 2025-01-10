@@ -1,0 +1,7 @@
+export UCOS_II=$PWD/../../
+export KDIR=$UCOS_II/Ports/RaspberryPI/klm/gcc/
+export INSTALL=$PWD/build/armklm/
+mkdir -p $INSTALL
+unset CPU
+unset ARCH
+

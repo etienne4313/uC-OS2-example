@@ -12,11 +12,15 @@ export PWD PROG INCLUDE common_objects
 all:
 	$(MAKE) -C $(KDIR)
 
+install:
+	cp $(PROG)* $(INSTALL)
+
 debug:
 	$(MAKE) -C $(KDIR) debug
 
 clean:
 	$(MAKE) -C $(KDIR) clean
+	rm -f *.ko *.hex
 
 flash:
 	$(MAKE) -C $(KDIR) flash

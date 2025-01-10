@@ -1,0 +1,5 @@
+export UCOS_II=$PWD/../../
+export KDIR=$UCOS_II/Ports/RaspberryPI/userspace/gcc/
+export INSTALL=$PWD/build/armuser/
+mkdir -p $INSTALL
+
