@@ -27,7 +27,7 @@ flash:
 
 mrproper:
 	find . -name ".*.cmd" -type f -print0 | xargs -0 /bin/rm -f
-	find . -name ".ko" -type f -print0 | xargs -0 /bin/rm -f
-	find . -name ".o" -type f -print0 | xargs -0 /bin/rm -f
+	find . -name "*.ko" -type f -print0 | xargs -0 /bin/rm -f
+	find . -name "*.o" -type f -print0 | xargs -0 /bin/rm -f
 	rm -rf build
 
