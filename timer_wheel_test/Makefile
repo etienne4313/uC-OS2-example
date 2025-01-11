@@ -20,7 +20,7 @@ debug:
 
 clean:
 	$(MAKE) -C $(KDIR) clean
-	rm -f *.ko *.hex
+	rm -f *.ko *.hex .*.cmd
 
 flash:
 	$(MAKE) -C $(KDIR) flash

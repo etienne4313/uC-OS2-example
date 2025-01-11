@@ -3,5 +3,4 @@ export KDIR=$UCOS_II/Ports/X86/klm/gcc/
 export INSTALL=$PWD/build/x86klm/
 mkdir -p $INSTALL
 unset CPU
-unset ARCH
 
