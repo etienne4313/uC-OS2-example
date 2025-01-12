@@ -5,7 +5,9 @@ PROG := $(PWD)/$(shell basename `pwd`)
 # Project files
 #
 INCLUDE = $(PWD)
-common_objects := $(patsubst %.c,%.o,$(wildcard $(PWD)/*.c))
+common_objects := $(patsubst %.c,../../../../../../../../../%.o,$(wildcard $(PWD)/*.c))
+#PI KLM build doesn't accept realpath ??
+#common_objects := $(patsubst %.c,%.o,$(wildcard $(PWD)/*.c))
 
 export PWD PROG INCLUDE common_objects
 

@@ -1,7 +1,8 @@
 #
 # Build all the subdir
 #
-PROGRAM := simple_example ping_pong_sem simple_sem timer_wheel_test timing_test
+PROGRAM := simple_example
+#ping_pong_sem simple_sem timer_wheel_test timing_test
 
 #
 # AVR arch
